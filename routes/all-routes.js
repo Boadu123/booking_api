@@ -13,4 +13,4 @@ bookingRouter.get("/bookings", getAllBookings);
 bookingRouter.get("/book/:id", getOneBooking);
 bookingRouter.post("/post", postBooking);
 bookingRouter.delete("/delete", deleteBooking);
-bookingRouter.patch("/update", updateBooking);
+bookingRouter.patch("/update/:id", updateBooking);

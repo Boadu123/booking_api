@@ -1,20 +1,28 @@
 import { booking } from "../models/booking-models.js";
 
-export const getAllBookings = async (req, res) => {
-  const getbooks = await new booking.find();
-  res.status(200).json(getbooks);
+export const getAllBookings = async (req, res, next) => {
+  try {
+    const getbooks =await booking.find();
+    res.status(200).json(getbooks);
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const getOneBooking = async (req, res) => {
+export const getOneBooking = async (req, res, next) => {
   res.status(200).json("This is one booking");
 };
 
 export const postBooking = async (req, res) => {
-  const newBooking = booking(req.body);
+  try {
+    const newBooking = await booking.create(req.body);
+    console.log(newBooking)
+    // const bookings = await newBooking.save();
 
-  const bookings = await newBooking.save();
-
-  res.status(200).json(bookings);
+    res.status(200).json(newBooking);
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const deleteBooking = (req, res) => {
