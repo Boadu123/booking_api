@@ -6,7 +6,7 @@ import "dotenv/config";
 const app = express();
 
 app.use(express.json());
-app.use(bookingRouter);
+app.use(bookingRouter); 
 
 const PORT = 3000;
 
