@@ -2,7 +2,7 @@ import { booking } from "../models/booking-models.js";
 
 export const getAllBookings = async (req, res, next) => {
   try {
-    const getbooks =await booking.find();
+    const getbooks = await booking.find();
     res.status(200).json(getbooks);
   } catch (error) {
     next(error);
@@ -16,7 +16,6 @@ export const getOneBooking = async (req, res, next) => {
 export const postBooking = async (req, res) => {
   try {
     const newBooking = await booking.create(req.body);
-    console.log(newBooking)
     // const bookings = await newBooking.save();
 
     res.status(200).json(newBooking);
